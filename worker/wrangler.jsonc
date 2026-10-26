@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vacantwatch",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "ENVIRONMENT": "production",
+    "ORG_NAME": "VacantWatch"
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "vacantwatch-db", "database_id": "e4c4bc8a-7e7c-4059-a367-63d3012aaf94", "migrations_dir": "migrations" }
+  ],
+  "r2_buckets": [{ "binding": "PHOTOS", "bucket_name": "vacantwatch-photos" }],
+  "kv_namespaces": [{ "binding": "CACHE", "id": "c1f14143c05b42cc972b36eadd7eaa33" }],
+  // The Python insights Worker (../insights). Deploy it first.
+  "services": [{ "binding": "INSIGHTS", "service": "vacantwatch-insights" }],
+  "triggers": {
+    // Must match CRON_ENRICH and CRON_DAILY in src/cron.ts (test/wiring.test.ts checks).
+    "crons": ["15 * * * *", "40 3 * * *"]
+  }
+}

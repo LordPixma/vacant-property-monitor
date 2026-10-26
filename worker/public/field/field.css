@@ -1,0 +1,35 @@
+/* Phone-first layout on top of the shared styles: big touch targets, one column. */
+body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+.f-top { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; gap: .5rem; padding: .6rem .9rem; padding-top: calc(.6rem + env(safe-area-inset-top)); background: var(--primary); color: var(--primary-ink); }
+.f-top h1 { font-size: 1.05rem; margin: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.f-top a, .f-top button { color: inherit; background: transparent; border-color: rgba(255,255,255,.4); }
+.f-main { padding: .9rem; max-width: 640px; margin: 0 auto; }
+.f-tabs { position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--surface); border-top: 1px solid var(--border); padding-bottom: env(safe-area-inset-bottom); }
+.f-tabs a { text-align: center; padding: .55rem 0 .5rem; text-decoration: none; color: var(--muted); font-size: .78rem; font-weight: 600; }
+.f-tabs a span { display: block; font-size: 1.25rem; line-height: 1.2; }
+.f-tabs a.active { color: var(--primary); }
+.sync-bar { display: flex; align-items: center; gap: .5rem; font-size: .85rem; padding: .5rem .75rem; border-radius: 10px; background: var(--surface-2); margin-bottom: .9rem; }
+.sync-bar.offline { background: var(--warn-soft); color: var(--warn); }
+.sync-bar.failed { background: var(--danger-soft); color: var(--danger); }
+.big-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 1rem; }
+.big-actions a, .big-actions button { min-height: 76px; flex-direction: column; font-size: .95rem; text-align: center; border-radius: 12px; }
+.big-actions .icon { font-size: 1.5rem; }
+.p-item { display: flex; gap: .75rem; align-items: flex-start; padding: .75rem; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); margin-bottom: .5rem; text-decoration: none; color: inherit; }
+.p-item .band { width: 6px; align-self: stretch; border-radius: 3px; background: var(--band-none); flex: 0 0 6px; }
+.p-item .grow { flex: 1; min-width: 0; }
+.p-item .dist { font-weight: 700; white-space: nowrap; }
+.toggle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .45rem; }
+.toggle { position: relative; }
+.toggle input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.toggle span { display: flex; align-items: center; min-height: 48px; padding: .5rem .65rem; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); font-size: .9rem; font-weight: 500; line-height: 1.2; }
+.toggle input:checked + span { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); font-weight: 700; }
+.toggle input:focus-visible + span { box-shadow: var(--focus); }
+.toggle.urgent input:checked + span { background: var(--danger-soft); border-color: var(--danger); color: var(--danger); }
+.seg { display: flex; flex-wrap: wrap; gap: .4rem; }
+.seg .toggle { flex: 1 1 calc(33% - .4rem); }
+.f-main input, .f-main select, .f-main textarea { font-size: 16px; padding: .7rem; }
+.f-main button.primary.block, .btn.block { width: 100%; min-height: 52px; font-size: 1.05rem; }
+.thumbs { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .5rem; }
+.thumbs img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; }
+.gps { font-size: .85rem; }
+.welfare { border: 2px solid var(--danger); }

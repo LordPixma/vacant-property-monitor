@@ -1,0 +1,22 @@
+{
+  "name": "VacantWatch Field",
+  "short_name": "VacantWatch",
+  "description": "Record vacant and abandoned properties on the ground, online or offline.",
+  "id": "/field/",
+  "start_url": "/field/",
+  "scope": "/field/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f7f9",
+  "theme_color": "#0f5c8c",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    { "src": "/field/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/field/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/field/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Report a property", "url": "/field/#/report", "icons": [{ "src": "/field/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Near me", "url": "/field/#/near", "icons": [{ "src": "/field/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

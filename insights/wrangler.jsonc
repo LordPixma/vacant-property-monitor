@@ -1,0 +1,11 @@
+{
+  "$schema": "../worker/node_modules/wrangler/config-schema.json",
+  "name": "vacantwatch-insights",
+  "main": "src/entry.py",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["python_workers", "disable_python_external_sdk"],
+  // Internal only: reached through the API Worker's service binding.
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,20 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: same-origin
+  Permissions-Policy: camera=(self), geolocation=(self), microphone=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://tile.openstreetmap.org; connect-src 'self' https://tile.openstreetmap.org; worker-src 'self'; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+
+/field/sw.js
+  Cache-Control: no-cache
+  Service-Worker-Allowed: /field/
+
+/field/*
+  Cache-Control: no-cache
+
+/app/*
+  Cache-Control: no-cache
+
+/shared/*
+  Cache-Control: no-cache
