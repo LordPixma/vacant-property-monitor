@@ -53,7 +53,12 @@ Workers → vacantwatch → Settings → Domains & Routes → add a custom domai
 
 ## GitHub Actions
 
-`.github/workflows/ci.yml` runs the TypeScript and Python tests on every push. `deploy.yml` deploys on push to `main` once the repository has `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets. These run when this folder is its own repository; inside another repository, move them to that repository's `.github/workflows`.
+`.github/workflows/ci.yml` runs the TypeScript and Python tests on every push and pull request. `deploy.yml` runs the same tests and deploys both Workers on every push to `main` (or by hand from the Actions tab). It needs two repository secrets, under Settings → Secrets and variables → Actions:
+
+- `CLOUDFLARE_API_TOKEN`: a token with Workers Scripts, D1, Workers KV Storage and Workers R2 Storage edit permissions on the account.
+- `CLOUDFLARE_ACCOUNT_ID`: the account the resources in `wrangler.jsonc` live in.
+
+Until both are set, the deploy job skips with a notice instead of failing.
 
 ## Backups
 

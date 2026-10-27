@@ -1,6 +1,6 @@
 # VacantWatch
 
-A standalone vacant-property monitor for a homelessness charity. **It is not part of PropertyManager360**: it lives in this folder of the PropFlow360 repository only until it moves to its own repository, and none of the PM360 rules in the parent CLAUDE.md (organisation scoping, monday.com boards, PM360 deploy pipeline, brand rules) apply here. Nothing in the parent `pnpm-workspace.yaml` or `.github/workflows` builds or deploys it.
+A standalone vacant-property monitor for a homelessness charity, run entirely on Cloudflare. It started inside the PropFlow360 (PropertyManager360) repository but is a separate product: none of PM360's rules (organisation scoping, monday.com boards, PM360 deploy pipeline, brand rules) apply here.
 
 ## Layout and commands
 

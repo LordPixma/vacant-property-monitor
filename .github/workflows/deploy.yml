@@ -11,10 +11,23 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # Secrets cannot be read in a job-level `if`, so check them in a step.
+      - id: secrets
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Skipping deploy: set CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets (see docs/DEPLOY.md)."
+          fi
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/checkout@v4
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm, cache-dependency-path: worker/package-lock.json }
-      - uses: astral-sh/setup-uv@v6
-      - run: npm ci
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: astral-sh/setup-uv@v6
+      - if: steps.secrets.outputs.ready == 'true'
+        run: npm ci
         working-directory: worker
-      - run: ./scripts/deploy.sh
+      - if: steps.secrets.outputs.ready == 'true'
+        run: ./scripts/deploy.sh
